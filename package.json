@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "**Project Title: MoodScape**",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "Aayush Raut",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
   },
-  "author": "",
-  "license": "ISC"
+  
+  "scripts": {
+    "dev": "node server.js"
+  }
 }
