@@ -2,6 +2,7 @@
   "name": "s72_moodscape",
   "version": "1.0.0",
   "description": "**Project Title: MoodScape**",
+
   "main": "index.js",
   "author": "Aayush Raut",
   "license": "ISC",
@@ -13,3 +14,4 @@
     "dev": "node server.js"
   }
 }
+
