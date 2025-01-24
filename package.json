@@ -9,9 +9,7 @@
   "dependencies": {
     "express": "^4.21.2"
   },
-  
   "scripts": {
     "dev": "node server.js"
   }
 }
-
