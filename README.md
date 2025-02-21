@@ -27,6 +27,8 @@ The concept of dynamically changing a website's background based on user mood us
 
 **Deployment link:** https://s72-moodscape.onrender.com
 
+**Deployment on cloudflare:** https://d420977f.s72-moodscape.pages.dev/
+
 
 
 
