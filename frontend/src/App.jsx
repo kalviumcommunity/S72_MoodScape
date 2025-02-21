@@ -1,4 +1,4 @@
-// client/src/App.js
+// eslint-disable-next-line
 import React from 'react';
 import LandingPage from './Home';
 
