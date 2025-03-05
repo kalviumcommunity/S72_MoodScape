@@ -1,0 +1,16 @@
+{
+  "name": "s72_moodscape",
+  "version": "1.0.0",
+  "description": "**Project Title: MoodScape**",
+  "main": "index.js",
+  "author": "Aayush Raut",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.12.1"
+  },
+  "scripts": {
+    "dev": "node server.js"
+  }
+}
