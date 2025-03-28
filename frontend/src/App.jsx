@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 import React from 'react';
-import LandingPage from './Home';
+import LandingPage from './components/Home';
 
 function App() {
   return (
