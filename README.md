@@ -18,7 +18,7 @@ Project Overview: MoodScape is an interactive web application that allows users 
 
 Frontend: HTML, CSS, JavaScript and React Frontend framework for building a dynamic and responsive user interface.
 
-Backend: Node.js for Server-side JavaScript environment, Express.js for web framework for handling HTTP requests and routing, MongoDB for database for storing user information and mood preferences.
+Backend: Node.js for the Server-side JavaScript environment, Express.js for the web framework for handling HTTP requests and routing, and MongoDB for the database for storing user information and mood preferences.
 
 **Why This Project:**
 
@@ -27,7 +27,7 @@ The concept of dynamically changing a website's background based on user mood us
 
 **Deployment link:** https://s72-moodscape.onrender.com
 
-**Deployment on cloudflare:** https://d420977f.s72-moodscape.pages.dev/
+**Deployment on cloudflare:** https://6a7a7f49.s72-moodscape.pages.dev/
 
 
 
