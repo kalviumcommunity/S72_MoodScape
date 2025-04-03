@@ -14,6 +14,12 @@ const ReviewForm = () => {
     setSubmitted(true);
   };
 
+  // Function to handle editing the feedback
+  const handleEdit = () => {
+    setSubmitted(false); // Reset submitted state to allow editing
+    // We do NOT clear review or improvement here so the previous values are retained
+  };
+
   return (
     <div className="review-form">
       <h2>We Value Your Feedback!</h2>
@@ -25,11 +31,11 @@ const ReviewForm = () => {
           <p><strong>What can be improved:</strong> {improvement}</p>
           <div>
             <Link to="/">
-            <button >Back</button>
+              <button>Back</button>
             </Link>
+            <button onClick={handleEdit}>Edit</button> {/* This will trigger the handleEdit function */}
           </div>
         </div>
-        
       ) : (
         <form onSubmit={handleSubmit}>
           <div className="form-group">
@@ -37,7 +43,7 @@ const ReviewForm = () => {
             <textarea
               id="review"
               value={review}
-              onChange={(e) => setReview(e.target.value)}
+              onChange={(e) => setReview(e.target.value)} // Keeps the entered value
               required
             />
           </div>
@@ -47,7 +53,7 @@ const ReviewForm = () => {
             <textarea
               id="improvement"
               value={improvement}
-              onChange={(e) => setImprovement(e.target.value)}
+              onChange={(e) => setImprovement(e.target.value)} // Keeps the entered value
               required
             />
           </div>
