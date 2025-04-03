@@ -2,6 +2,7 @@
 import '../styles/Home.css';
 import React, { useState } from 'react';
 import styled from 'styled-components'; // Import styled-components
+import { Link } from 'react-router-dom';
 
 function LandingPage() {
   const [selectedOption, setSelectedOption] = useState("Choose Your mood");
@@ -88,6 +89,11 @@ function LandingPage() {
               </label>
             </div>
           </div>
+        </div>
+        <div className='r-button'>
+          <Link to="/review-form">
+            <button>Tell us about your experience</button>
+          </Link>
         </div>
       
     </StyledWrapper>
