@@ -1,4 +1,5 @@
 // eslint-disable-next-line
+// PpUTsgOGQPrbWB6K
 import '../styles/Home.css';
 import React, { useState } from 'react';
 import styled from 'styled-components'; // Import styled-components
@@ -93,6 +94,12 @@ function LandingPage() {
         <div className='r-button'>
           <Link to="/review-form">
             <button>Tell us about your experience</button>
+          </Link>
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+          <Link to="/signup">
+            <button>Signup</button>
           </Link>
         </div>
       
