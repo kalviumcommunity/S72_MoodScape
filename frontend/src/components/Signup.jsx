@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // If you're using React Router
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Signup.css';
 
 const Signup = () => {
@@ -8,6 +8,7 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,12 +39,11 @@ const Signup = () => {
       const data = await response.json();
   
       if (response.ok) {
+        localStorage.setItem('username', username);
         setSuccessMessage(data.message);
-        setUsername('');
-        setPassword('');
-        setConfirmPassword('');
+        navigate('/');
       } else {
-        setError(data.message); // Display detailed error message returned from backend
+        setError(data.message);
       }
     } catch (err) {
       setError('An error occurred during signup.');

@@ -9,11 +9,30 @@ const ReviewForm = () => {
   const [submitted, setSubmitted] = useState(false);
 
   // Function to handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+  
+    const feedbackData = { review, improvement };
+  
+    try {
+      const response = await fetch('http://localhost:5000/api/feedback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(feedbackData),
+      });
+  
+      const data = await response.json();
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        console.error('Error submitting feedback:', data.message);
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+    }
   };
-
   // Function to handle editing the feedback
   const handleEdit = () => {
     setSubmitted(false); // Reset submitted state to allow editing

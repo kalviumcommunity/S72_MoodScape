@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // If you're using React Router
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Login.css'
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
@@ -16,17 +17,29 @@ const Login = () => {
       return;
     }
 
-    // In a real application, you would send this data to your backend for login
-    const loginData = {
-      username: username,
-      password: password,
-    };
+    const loginData = { username, password };
 
-    console.log('Logging in with:', loginData);
+    try {
+      const response = await fetch('http://localhost:5000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(loginData),
+      });
 
-    // For this example, we'll just clear the form
-    setUsername('');
-    setPassword('');
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem('username', username);
+        navigate('/');
+      } else {
+        setError(data.message || 'Login failed. Please check your credentials.');
+      }
+    } catch (err) {
+      setError('An error occurred during login.');
+      console.error('Error during login:', err);
+    }
   };
 
   return (

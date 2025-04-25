@@ -5,4 +5,22 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true }
 });
 
-module.exports = mongoose.model('User', userSchema);
+const feedbackSchema = new mongoose.Schema({
+  review: {
+    type: String,
+    required: true,
+  },
+  improvement: {
+    type: String,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+const User = mongoose.model('User', userSchema);
+const Feedback = mongoose.model('Feedback', feedbackSchema);
+
+module.exports = { User, Feedback };

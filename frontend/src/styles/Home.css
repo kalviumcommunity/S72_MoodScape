@@ -5,149 +5,298 @@
     color: #ffffff;
     font-family: Arial, sans-serif;
     margin-bottom: 20px;
-    
-  }  
-  /* Add some basic padding for the overall structure */
-  div {
+    background: rgba(0, 0, 0, 0.3);
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
 
-  .container {
-    width: 100vw; /* 100% of the viewport width */
-    height: 100vh; /* 100% of the viewport height */
-   
-  }
-
-  /* Home.css */
-  .Styled-rapper {
-  background-color: var(--background-color, #ffffff); /* Default to white */
-  min-height: 100vh; /* Covers the full screen */
+/* Add some basic padding for the overall structure */
+div {
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: background-color 0.5s ease; /* Smooth transition */
 }
 
+.container {
+  width: 100vw; /* 100% of the viewport width */
+  height: 100vh; /* 100% of the viewport height */
+ 
+}
 
-  /* dropdown */
+/* Home.css */
+.Styled-rapper {
+background-color: var(--background-color, #ffffff); /* Default to white */
+min-height: 100vh; /* Covers the full screen */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+transition: background-color 0.5s ease; /* Smooth transition */
+}
 
-  .select {
+/* Main Container */
+.main-container {
+    text-align: center;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.main-container h1 {
+    margin-bottom: 20px;
+}
+
+/* dropdown */
+.select {
     width: fit-content;
     cursor: pointer;
-    
     transition: 300ms;
     color: white;
     overflow: hidden;
-    
-  }
+    margin: 0 auto;
+}
 
-  .selected {
-    background-color: #2a2f3b;
-    padding: 10px;
-    margin-bottom: 3px;
-    border-radius: 15px;
-    display: flex;
-    z-index: 100000;
-    font-size: 15px;
-    position: relative; 
-    align-items: center;
-    justify-content: space-between;
-    width: 200px;
-  }
+.selected {
+  background-color: #2a2f3b;
+  padding: 10px;
+  margin-bottom: 3px;
+  border-radius: 15px;
+  display: flex;
+  z-index: 100000;
+  font-size: 15px;
+  position: relative; 
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+}
 
-  .arrow {    
-    
-    height: 10px;
-    transform: rotate(-90deg);
-    width: 25px;
-    fill: white;
-    z-index: 100000;
-    transition: 300ms ease;
-  }
+.arrow {    
+  height: 10px;
+  transform: rotate(-90deg);
+  width: 25px;
+  fill: white;
+  z-index: 100000;
+  transition: 300ms ease;
+}
 
-  .options {
+.options {
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  padding: 5px;
+  background-color: #2a2f3b;
+  position: relative;
+  top: -25px;
+  opacity: 0;
+  transition: 300ms;
+  
+}
+
+.select:hover > .options {
+  opacity: 1;
+  top: 0;
+}
+
+.select:hover > .selected .arrow {
+  transform: rotate(0deg);
+}
+
+.option {
+  border-radius: 10px;
+  padding: 5px;
+  transition: 300ms;
+  background-color: #2a2f3b;
+  width: 170px;
+  font-size: 15px;
+  margin-bottom: -15px;
+}
+.option:hover {
+  background-color: #323741;
+}
+
+.options input[type="radio"] {
+  display: none;
+}
+
+.options label {
+  display: inline-block;
+}
+.options label::before {
+  content: attr(data-txt);
+}
+
+.options input[type="radio"]:checked + label {
+  display: none;
+}
+
+.options input[type="radio"]#all:checked + label {
+  display: none;
+}
+
+.r-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+  
+}
+
+.r-button button {
+  background: linear-gradient(45deg, #db42dd, #ad1cf0); /* Purple gradient */
+  color: white;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.r-button button:hover {
+  background: linear-gradient(45deg, #db42dd, #ad1cf0); /* Change gradient on hover */
+  transform: scale(1.10); /* Slightly enlarge the button on hover */
+}
+
+/* Auth Buttons */
+.auth-buttons {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.auth-buttons button {
+  background: linear-gradient(45deg, #db42dd, #ad1cf0);
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.auth-buttons button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(219, 66, 221, 0.5);
+}
+
+/* Experience Button */
+.experience-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.experience-button button {
+  background: linear-gradient(45deg, #db42dd, #ad1cf0);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.experience-button button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(219, 66, 221, 0.5);
+}
+
+/* Hamburger Menu */
+.menu-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.hamburger-menu {
+    width: 30px;
+    height: 25px;
     display: flex;
     flex-direction: column;
-    border-radius: 15px;
-    padding: 5px;
-    background-color: #2a2f3b;
-    position: relative;
-    top: -25px;
-    opacity: 0;
-    transition: 300ms;
-    
-  }
-
-  .select:hover > .options {
-    opacity: 1;
-    top: 0;
-  }
-
-  .select:hover > .selected .arrow {
-    transform: rotate(0deg);
-  }
-
-  .option {
-    border-radius: 10px;
-    padding: 5px;
-    transition: 300ms;
-    background-color: #2a2f3b;
-    width: 170px;
-    font-size: 15px;
-    margin-bottom: -15px;
-  }
-  .option:hover {
-    background-color: #323741;
-  }
-
-  .options input[type="radio"] {
-    display: none;
-  }
-
-  .options label {
-    display: inline-block;
-  }
-  .options label::before {
-    content: attr(data-txt);
-  }
-
-  .options input[type="radio"]:checked + label {
-    display: none;
-  }
-
-  .options input[type="radio"]#all:checked + label {
-    display: none;
-  }
-
-  
-  .r-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    gap: 10px;
-    
-  }
-  
-  .r-button button {
-    background: linear-gradient(45deg, #db42dd, #ad1cf0); /* Purple gradient */
-    color: white;
+    justify-content: space-between;
     cursor: pointer;
-    padding: 10px 20px;
+    padding: 5px;
+}
+
+.bar {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+    transform-origin: left center;
+}
+
+.hamburger-menu.open .bar:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.hamburger-menu.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.open .bar:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+.menu-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 150px;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.menu-dropdown.open {
+    transform: scaleY(1);
+}
+
+.menu-dropdown button {
+    background: linear-gradient(45deg, #db42dd, #ad1cf0);
+    color: white;
+    padding: 8px 16px;
     border: none;
     border-radius: 5px;
-    transition: all 0.3s ease; /* Smooth transition for hover effect */
-  }
-  
-  .r-button button:hover {
-    background: linear-gradient(45deg, #db42dd, #ad1cf0); /* Change gradient on hover */
-    transform: scale(1.10); /* Slightly enlarge the button on hover */
-  }
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    text-align: left;
+    width: 100%;
+}
+
+.menu-dropdown button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(219, 66, 221, 0.5);
+}
   
   
 
