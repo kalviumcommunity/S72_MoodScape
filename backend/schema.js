@@ -1,23 +1,26 @@
 const mongoose = require('mongoose');
 
-// Define the user schema
 const userSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    password: {
-        type: String,
-        required: true
-    }
-}, { timestamps: true }); // Adds createdAt and updatedAt fields
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true }
+});
 
-// Define the User model
+const feedbackSchema = new mongoose.Schema({
+  review: {
+    type: String,
+    required: true,
+  },
+  improvement: {
+    type: String,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
 const User = mongoose.model('User', userSchema);
+const Feedback = mongoose.model('Feedback', feedbackSchema);
 
-module.exports = User;
+module.exports = { User, Feedback };
