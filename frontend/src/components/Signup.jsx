@@ -43,10 +43,19 @@ const Signup = () => {
         setSuccessMessage(data.message);
         navigate('/');
       } else {
-        setError(data.message);
+        // Handle different types of error responses
+        if (data.error === 'Missing required fields') {
+          setError('Please fill in all fields.');
+        } else if (data.error === 'Validation failed' && data.details.password) {
+          setError(data.details.password);
+        } else if (data.error === 'Username already taken') {
+          setError('Username is already taken. Please choose another one.');
+        } else {
+          setError(data.error || 'An error occurred during signup.');
+        }
       }
     } catch (err) {
-      setError('An error occurred during signup.');
+      setError('An error occurred during signup. Please try again.');
       console.error('Error during signup:', err);
     }
   };
@@ -66,6 +75,7 @@ const Signup = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             className="form-input"
+            required
           />
         </div>
         <div className="form-group">
@@ -76,6 +86,7 @@ const Signup = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="form-input"
+            required
           />
         </div>
         <div className="form-group">
@@ -86,6 +97,7 @@ const Signup = () => {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             className="form-input"
+            required
           />
         </div>
         <button type="submit" className="submit-btn">Sign Up</button>

@@ -33,7 +33,7 @@ function LandingPage() {
       setBackgroundColor("#f44336");
     } else if(data=="Angry/Frustrated: 😠"){
       setBackgroundColor("#e91e63");
-    } 
+    }
   };
 
   const toggleMenu = () => {

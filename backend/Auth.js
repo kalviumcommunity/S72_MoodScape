@@ -2,52 +2,30 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { body, validationResult } = require('express-validator');
 const { User } = require('./schema');
 
-// Validation middleware for signup
-const signupValidation = [
-  body('username')
-    .trim()
-    .isLength({ min: 3 })
-    .withMessage('Username must be at least 3 characters long')
-    .matches(/^[a-zA-Z0-9_]+$/)
-    .withMessage('Username can only contain letters, numbers, and underscores'),
-  body('password')
-    .isLength({ min: 8 })
-    .withMessage('Password must be at least 8 characters long')
-    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)
-    .withMessage('Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character')
-];
-
-// Validation middleware for login
-const loginValidation = [
-  body('username')
-    .trim()
-    .notEmpty()
-    .withMessage('Username is required'),
-  body('password')
-    .notEmpty()
-    .withMessage('Password is required')
-];
-
 // POST /api/signup
-router.post('/signup', signupValidation, async (req, res) => {
+router.post('/signup', async (req, res) => {
   try {
-    // Check for validation errors
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
+    console.log('Raw request body:', req.body);
+    const { username, password } = req.body;
+
+    // Validate required fields
+    if (!username || !password) {
+      console.log('Missing fields:', { username: !!username, password: !!password });
       return res.status(400).json({ 
-        error: 'Validation failed',
-        details: errors.array()
+        error: 'Missing required fields',
+        details: {
+          username: !username ? 'Username is required' : undefined,
+          password: !password ? 'Password is required' : undefined
+        }
       });
     }
-
-    const { username, password } = req.body;
 
     // Check if username already exists
     const existingUser = await User.findOne({ username });
     if (existingUser) {
+      console.log('Username already taken:', username);
       return res.status(400).json({ 
         error: 'Username already taken'
       });
@@ -65,6 +43,7 @@ router.post('/signup', signupValidation, async (req, res) => {
 
     // Save user to database
     await user.save();
+    console.log('User created successfully:', { username: user.username, id: user._id });
 
     // Generate JWT token
     const token = jwt.sign(
@@ -82,7 +61,20 @@ router.post('/signup', signupValidation, async (req, res) => {
       }
     });
   } catch (error) {
-    console.error('Signup error:', error);
+    console.error('Signup error details:', error);
+    
+    if (error.name === 'ValidationError') {
+      const validationErrors = {};
+      Object.keys(error.errors).forEach(key => {
+        validationErrors[key] = error.errors[key].message;
+      });
+      console.log('Validation errors:', validationErrors);
+      return res.status(400).json({ 
+        error: 'Validation failed',
+        details: validationErrors
+      });
+    }
+    
     res.status(500).json({ 
       error: 'Server error during signup',
       details: error.message 
@@ -91,17 +83,8 @@ router.post('/signup', signupValidation, async (req, res) => {
 });
 
 // POST /api/login
-router.post('/login', loginValidation, async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
-    // Check for validation errors
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ 
-        error: 'Validation failed',
-        details: errors.array()
-      });
-    }
-
     const { username, password } = req.body;
 
     // Find user by username
