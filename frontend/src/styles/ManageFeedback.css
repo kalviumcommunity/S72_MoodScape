@@ -1,0 +1,190 @@
+.manage-feedback-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.manage-feedback-container h1 {
+  text-align: center;
+  font-size: 24px;
+  background: linear-gradient(45deg, #d56ecf, #ae19d3);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 30px;
+}
+
+.error-message {
+  color: #ff4444;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.success-message {
+  color: #00C851;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.edit-form {
+  background: rgba(44, 44, 44, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.edit-form h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  min-height: 100px;
+  resize: vertical;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.update-btn, .cancel-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.update-btn {
+  background: linear-gradient(45deg, #db42dd, #ad1cf0);
+  color: white;
+}
+
+.cancel-btn {
+  background: #666;
+  color: white;
+}
+
+.update-btn:hover, .cancel-btn:hover {
+  transform: scale(1.05);
+}
+
+.feedback-list {
+  margin-top: 20px;
+}
+
+.feedback-list h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.feedback-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feedback-item {
+  background: rgba(44, 44, 44, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feedback-content {
+  margin-bottom: 15px;
+}
+
+.feedback-content p {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.feedback-content strong {
+  color: #db42dd;
+}
+
+.feedback-date {
+  color: #888;
+  font-size: 0.9em;
+}
+
+.feedback-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.edit-btn, .delete-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.edit-btn {
+  background: #4CAF50;
+  color: white;
+}
+
+.delete-btn {
+  background: #f44336;
+  color: white;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+  transform: scale(1.05);
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.back-btn, .add-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.back-btn {
+  background: #666;
+}
+
+.add-btn {
+  background: linear-gradient(45deg, #db42dd, #ad1cf0);
+}
+
+.back-btn:hover, .add-btn:hover {
+  transform: scale(1.05);
+} 
